@@ -2,14 +2,16 @@ var express = require('express');
 var router = express.Router();
 var CategoryModel = require('../models/CategoryModel');
 var ProductModel = require('../models/ProductModel');
+ var BrandModel = require('../models/BrandModel');
 
 router.get('/', async (req, res) => {
-   var categories = await CategoryModel.find({});
+   var categories = await CategoryModel.find({}).populate('brand');
    res.render('category/index', { categories });
 })
 
-router.get('/add', (req, res) => {
-   res.render('category/add');
+router.get('/add',  async (req, res) => {
+   var brands = await BrandModel.find({});
+   res.render('category/add', { brands });
 })
 
 router.post('/add', async (req, res) => {
