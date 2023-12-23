@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn-group {
+            margin-bottom: 20px;
+        }
+
+        table {
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .btn-action {
+            width: 80px;
+            margin-right: 5px;
+        }
+
+        img.header-image {
+            min-width: 100px; /* Set the minimum width to maintain the original size */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="btn-group">
+            <a class="btn btn-info" href="/product/add">Add new product</a>
+            <a class="btn btn-primary" href="/product/sort/asc">Sort ASC</a>
+            <a class="btn btn-secondary" href="/product/sort/desc">Sort DESC</a>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Product name</th>
+                    <th>Product color</th>
+                    <th>Product category</th>
+                    <th>Product image</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products }}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ color }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <img src="{{ image }}" alt="{{ name }}">
+                    </td>
+                    <td>
+                        <a class="btn btn-warning btn-action" href="/product/edit/{{ _id }}">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-action" href="/product/delete/{{ _id }}"
+                            onclick="return confirm('Are you sure to delete this product?');">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

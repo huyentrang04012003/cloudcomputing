@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Edit Product</title>
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+  <form action="/product/edit/{{ product._id }}" method="post">
+    <h1>Edit Product</h1>
+    
+    <div class="form-group">
+      <label for="name">Product Model:</label>
+      <input type="text" class="form-control" id="name" name="name" required value="{{ product.name }}">
+    </div>
+    
+    <div class="form-group">
+      <label for="image">Product Image:</label>
+      <input type="url" class="form-control" id="image" name="image" required value="{{ product.image }}">
+      <img src="{{ product.image }}" alt="" width="100" height="100">
+    </div>
+    
+    <div class="form-group">
+      <label>Product Color:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="color" value="Black" {{#equal product.color "Black"}}checked{{/equal}}>
+        <label class="form-check-label">Black</label>
+      </div>
+      
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="color" value="White" {{#equal product.color "White"}}checked{{/equal}}>
+        <label class="form-check-label">White</label>
+      </div>
+      
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="color" value="Yellow" {{#equal product.color "Yellow"}}checked{{/equal}}>
+        <label class="form-check-label">Yellow</label>
+      </div>
+      
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="color" value="Blue" {{#equal product.color "Blue"}}checked{{/equal}}>
+        <label class="form-check-label">Blue</label>
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </form>
+
+</div>
+
+<!-- Bootstrap JS and Popper.js (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
